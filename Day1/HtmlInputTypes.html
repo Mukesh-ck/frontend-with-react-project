@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Complete HTML Input Types</title>
+
+    <!-- <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="search"],
+        input[type="url"],
+        input[type="number"],
+        input[type="date"],
+        input[type="datetime-local"],
+        input[type="month"],
+        input[type="time"],
+        input[type="week"],
+        input[type="file"] {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+
+        input[type="color"] {
+            width: 80px;
+            height: 45px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        input[type="submit"],
+        input[type="reset"],
+        input[type="button"] {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        input[type="submit"] {
+            background: #007bff;
+            color: white;
+        }
+
+        input[type="reset"] {
+            background: #dc3545;
+            color: white;
+        }
+
+        input[type="button"] {
+            background: #28a745;
+            color: white;
+        }
+
+        .hidden-info {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .image-button {
+            margin-top: 10px;
+            width: 120px;
+            cursor: pointer;
+        }
+
+        .section-title {
+            margin-top: 30px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #007bff;
+            color: #007bff;
+        }
+    </style> -->
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Registration Form</h1>
+
+    <p class="description">
+        Complete example of HTML input types
+    </p>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+
+        <!-- ================================= -->
+        <!-- BASIC INFORMATION -->
+        <!-- ================================= -->
+
+        <h2 class="section-title">1. Basic Information</h2>
+
+        <!-- TEXT -->
+        <div class="form-group">
+            <label for="fullname">Full Name</label> 
+
+            <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                placeholder="Enter your full name"
+                required
+            ><br><br>
+        </div>
+
+
+        <!-- EMAIL -->
+        <div class="form-group">
+            <label for="email">Email Address</label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@gmail.com"
+                required
+            ><br><br>
+        </div>
+
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+            ><br><br>
+        </div>
+
+
+        <!-- TELEPHONE -->
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="98XXXXXXXX"
+            ><br><br>
+        </div>
+
+
+        <!-- SEARCH -->
+        <div class="form-group">
+            <label for="search">Search Course</label>
+
+            <input
+                type="search"
+                id="search"
+                name="search"
+                placeholder="Search your course"
+            ><br><br>
+        </div>
+
+
+        <!-- URL -->
+        <div class="form-group">
+            <label for="website">Personal Website</label>
+
+            <input
+                type="url"
+                id="website"
+                name="website"
+                placeholder="https://example.com"
+            ><br><br>
+        </div>
+
+
+        <!-- NUMBER -->
+        <div class="form-group">
+            <label for="age">Age</label>
+
+            <input
+                type="number"
+                id="age"
+                name="age"
+                min="16"
+                max="100"
+                placeholder="Enter your age"
+            ><br><br>
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- DATE & TIME -->
+        <!-- ================================= -->
+
+        <h2 class="section-title">2. Date & Time</h2>
+
+
+        <!-- DATE -->
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+
+            <input
+                type="date"
+                id="dob"
+                name="dob"
+            ><br><br>
+        </div>
+
+
+        <!-- DATETIME LOCAL -->
+        <div class="form-group">
+            <label for="appointment">Registration Date & Time</label>
+
+            <input
+                type="datetime-local"
+                id="appointment"
+                name="appointment"
+            ><br><br>
+        </div>
+
+
+        <!-- MONTH -->
+        <div class="form-group">
+            <label for="joining-month">Joining Month</label>
+
+            <input
+                type="month"
+                id="joining-month"
+                name="joining_month"
+            ><br><br>
+        </div>
+
+
+        <!-- TIME -->
+        <div class="form-group">
+            <label for="preferred-time">Preferred Class Time</label>
+
+            <input
+                type="time"
+                id="preferred-time"
+                name="preferred_time"
+            ><br><br>
+        </div>
+
+
+        <!-- WEEK -->
+        <div class="form-group">
+            <label for="week">Preferred Week</label>
+
+            <input
+                type="week"
+                id="week"
+                name="week"
+            ><br><br>
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- RADIO & CHECKBOX -->
+        <!-- ================================= -->
+
+        <h2 class="section-title">3. Choices</h2>
+
+
+        <!-- RADIO -->
+        <div class="form-group">
+
+            <label>Gender</label>
+
+            <div class="radio-group">
+
+                <label>
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="male"
+                    >
+                    Male
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="female"
+                    >
+                    Female
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="other"
+                    >
+                    Other
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHECKBOX -->
+        <div class="form-group">
+
+            <label>Skills</label>
+
+            <div class="checkbox-group">
+
+                <label>
+                    <input
+                        type="checkbox"
+                        name="skills[]"
+                        value="html"
+                    >
+                    HTML
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        name="skills[]"
+                        value="css"
+                    >
+                    CSS
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        name="skills[]"
+                        value="javascript"
+                    >
+                    JavaScript
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        name="skills[]"
+                        value="php"
+                    >
+                    PHP
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- COLOR & RANGE -->
+        <!-- ================================= -->
+
+        <h2 class="section-title">4. Preferences</h2>
+
+
+        <!-- COLOR -->
+        <div class="form-group">
+
+            <label for="color">
+                Favorite Color
+            </label>
+
+            <input
+                type="color"
+                id="color"
+                name="color"
+                value="#007bff"
+            >
+
+        </div>
+
+
+        <!-- RANGE -->
+        <div class="form-group">
+
+            <label for="experience">
+                Programming Experience
+            </label>
+
+            <input
+                type="range"
+                id="experience"
+                name="experience"
+                min="0"
+                max="10"
+                value="5"
+            >
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- FILE -->
+        <!-- ================================= -->
+
+        <h2 class="section-title">5. Documents</h2>
+
+
+        <!-- FILE -->
+        <div class="form-group">
+
+            <label for="photo">
+                Upload Profile Photo
+            </label>
+
+            <input
+                type="file"
+                id="photo"
+                name="photo"
+                accept="image/*"
+            >
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- HIDDEN -->
+        <!-- ================================= -->
+
+        <!-- HIDDEN INPUT -->
+
+        <input
+            type="hidden"
+            name="student_id"
+            value="STU2026001"
+        >
+
+        <div class="hidden-info">
+            Hidden Student ID: STU2026001
+            <br>
+            (This field is not visible as an input.)
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- BUTTON TYPES -->
+        <!-- ================================= -->
+
+        <h2 class="section-title">6. Form Buttons</h2>
+
+
+        <div class="buttons">
+
+            <!-- SUBMIT -->
+            <input
+                type="submit"
+                value="Register"
+            >
+
+
+            <!-- RESET -->
+            <input
+                type="reset"
+                value="Reset"
+            >
+
+
+            <!-- BUTTON -->
+            <input
+                type="button"
+                value="Click Me"
+                onclick="showMessage()"
+            >
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- IMAGE INPUT -->
+        <!-- ================================= -->
+
+        <div class="form-group">
+
+            <label>
+                Image Submit Button
+            </label>
+
+            <input
+                type="image"
+                src="https://via.placeholder.com/120x45?text=Submit"
+                alt="Submit"
+                class="image-button"
+            >
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<script>
+
+    function showMessage() {
+
+        alert("Hello! You clicked the normal button.");
+
+    }
+
+</script>
+
+</body>
+</html>
