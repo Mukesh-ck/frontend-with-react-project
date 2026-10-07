@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chairlyo — The All-in-One Platform for Modern Salons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum:#5A1449;
+    --magenta:#C1348C;
+    --pink:#E85FB0;
+    --bg-light:#FBF6FA;
+    --card:#F6ECF3;
+    --ink:#231018;
+    --ink-soft:#6B5563;
+    --dark:#1B0C17;
+    --dark-card:#3A1531;
+    --line:#EBDDE6;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--bg-light);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;color:var(--ink)}
+  a{text-decoration:none;color:inherit}
+  img,svg{max-width:100%;display:block}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:13px 26px;border-radius:999px;font-weight:600;font-size:15px;
+    cursor:pointer;border:none;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:linear-gradient(135deg,var(--magenta),var(--plum));color:#fff;box-shadow:0 8px 20px -6px rgba(193,52,140,.55)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+
+  /* NAV */
+  header{position:sticky;top:0;background:rgba(251,246,250,.9);backdrop-filter:blur(10px);z-index:50;border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces',serif;font-weight:600;font-size:19px}
+  .logo-mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--pink),var(--plum))}
+  .nav-links{display:flex;gap:34px;font-size:14.5px;font-weight:500;color:var(--ink-soft)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-right{display:flex;align-items:center;gap:20px;font-size:14.5px;font-weight:500}
+  @media(max-width:860px){.nav-links{display:none}}
+
+  /* HERO */
+  .hero{padding:88px 0 0;text-align:center;position:relative;overflow:hidden}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;
+    background:var(--card);color:var(--magenta);font-size:13.5px;font-weight:600;margin-bottom:28px;
+  }
+  .badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--magenta)}
+  .hero h1{font-size:clamp(34px,5.2vw,58px);line-height:1.08;max-width:820px;margin:0 auto}
+  .hero h1 span{color:var(--magenta)}
+  .hero p{max-width:520px;margin:22px auto 34px;color:var(--ink-soft);font-size:17px}
+  .hero-ctas{display:flex;gap:14px;justify-content:center;margin-bottom:64px}
+
+  /* DASHBOARD MOCK */
+  .dash-frame{position:relative;padding:0 0 0}
+  .dash-glow{position:absolute;inset:-40px 0 auto;height:340px;background:radial-gradient(60% 100% at 50% 0%,rgba(193,52,140,.28),transparent 70%);z-index:0}
+  .dashboard{
+    position:relative;z-index:1;max-width:980px;margin:0 auto;border-radius:20px 20px 0 0;
+    background:#fff;border:1px solid var(--line);box-shadow:0 40px 80px -30px rgba(90,20,73,.35);
+    overflow:hidden;display:flex;
+  }
+  .dash-side{width:190px;background:#FBF6FA;border-right:1px solid var(--line);padding:22px 16px;flex-shrink:0}
+  .dash-side .item{padding:9px 12px;border-radius:9px;font-size:13px;color:var(--ink-soft);margin-bottom:4px;font-weight:500}
+  .dash-side .item.active{background:linear-gradient(135deg,var(--magenta),var(--plum));color:#fff}
+  .dash-main{flex:1;padding:26px 28px;text-align:left}
+  .dash-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .dash-topbar h3{font-family:'Inter',sans-serif;font-size:15px;font-weight:700}
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+  .stat-box{border:1px solid var(--line);border-radius:11px;padding:14px}
+  .stat-box .label{font-size:11.5px;color:var(--ink-soft);margin-bottom:6px}
+  .stat-box .val{font-size:19px;font-weight:700;font-family:'Fraunces',serif}
+  .chart-row{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+  .panel{border:1px solid var(--line);border-radius:11px;padding:14px;height:150px}
+  .panel .label{font-size:11.5px;color:var(--ink-soft);margin-bottom:10px;font-weight:600}
+  .fake-chart{height:90px;display:flex;align-items:flex-end;gap:6px}
+  .fake-chart span{flex:1;background:linear-gradient(180deg,var(--pink),var(--magenta));border-radius:4px 4px 0 0;opacity:.85}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+  .cal-grid div{aspect-ratio:1;border-radius:5px;background:#F3E7EF}
+  .cal-grid div.on{background:var(--magenta)}
+
+  /* STATS BAR */
+  .statsbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:44px 0}
+  .statsbar .wrap{display:flex;justify-content:space-around;flex-wrap:wrap;gap:24px;text-align:center}
+  .statsbar .num{font-family:'Fraunces',serif;font-size:32px;font-weight:600;color:var(--magenta)}
+  .statsbar .cap{font-size:13px;color:var(--ink-soft);margin-top:4px}
+
+  /* SECTION HEAD */
+  .section{padding:96px 0}
+  .section-head{text-align:center;max-width:560px;margin:0 auto 52px}
+  .section-head h2{font-size:clamp(26px,3.4vw,38px);margin-bottom:14px}
+  .section-head p{color:var(--ink-soft);font-size:16px}
+
+  /* FEATURE GRID */
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .feature-card{background:var(--card);border-radius:var(--radius);padding:26px}
+  .fc-icon{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--pink),var(--plum));margin-bottom:18px}
+  .feature-card h3{font-size:17px;margin-bottom:8px}
+  .feature-card p{font-size:14px;color:var(--ink-soft)}
+  @media(max-width:760px){.feature-grid{grid-template-columns:1fr}}
+
+  /* SPOTLIGHT / TABS */
+  .tabs{display:flex;justify-content:center;gap:10px;margin-bottom:44px;flex-wrap:wrap}
+  .tab{padding:9px 18px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--ink-soft);border:1px solid var(--line)}
+  .tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .spotlight{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+  .spotlight h3{font-size:26px;margin-bottom:14px}
+  .spotlight p{color:var(--ink-soft);font-size:15.5px;margin-bottom:22px}
+  .spotlight .callout{background:var(--card);border-radius:11px;padding:16px 18px;margin-bottom:22px;font-size:14px;color:var(--ink)}
+  .spot-visual{background:linear-gradient(150deg,var(--magenta),var(--plum));border-radius:18px;padding:32px;color:#fff;min-height:280px;display:flex;align-items:center;justify-content:center}
+  .spot-visual .mini{background:rgba(255,255,255,.12);border-radius:12px;padding:20px;width:100%;backdrop-filter:blur(6px)}
+  .spot-visual .mini .dot-row{display:flex;gap:6px;margin-bottom:16px}
+  .spot-visual .mini .dot-row span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5)}
+  .spot-visual .mini .line{height:9px;border-radius:5px;background:rgba(255,255,255,.25);margin-bottom:9px}
+  @media(max-width:820px){.spotlight{grid-template-columns:1fr}}
+
+  /* BUILT FOR */
+  .builtfor{display:grid;grid-template-columns:1fr 1.15fr;gap:52px;align-items:center}
+  .photo-card{border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(160deg,#E9A8CB,var(--plum) 70%);position:relative}
+  .photo-card::after{content:"✂";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:60px;color:rgba(255,255,255,.35)}
+  .builtfor h2{font-size:30px;margin-bottom:16px}
+  .builtfor p{color:var(--ink-soft);font-size:15.5px;margin-bottom:20px}
+  .builtfor .highlight{background:var(--card);border-left:3px solid var(--magenta);border-radius:0 10px 10px 0;padding:16px 18px;margin-bottom:20px;font-size:14.5px}
+  .builtfor .link-row{color:var(--magenta);font-weight:600;font-size:14.5px;margin-bottom:26px}
+  @media(max-width:820px){.builtfor{grid-template-columns:1fr}}
+
+  /* TESTIMONIALS DARK */
+  .dark-section{background:radial-gradient(120% 100% at 20% 0%,var(--dark-card),var(--dark) 65%);color:#fff;padding:96px 0}
+  .dark-section .section-head h2{color:#fff}
+  .dark-section .section-head p{color:#D8C2D2}
+  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .t-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:22px}
+  .t-card.tall{grid-row:span 1}
+  .t-card p{font-size:14.5px;color:#EDE0E8;margin-bottom:18px}
+  .t-who{display:flex;align-items:center;gap:10px}
+  .t-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--magenta))}
+  .t-who .name{font-size:13.5px;font-weight:600}
+  .t-who .role{font-size:12px;color:#B99CB3}
+  @media(max-width:820px){.t-grid{grid-template-columns:1fr}}
+
+  /* FAQ */
+  .faq{max-width:720px;margin:0 auto}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-item summary{list-style:none;cursor:pointer;padding:20px 4px;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:15.5px}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:"+";font-size:20px;color:var(--magenta);font-weight:400}
+  .faq-item[open] summary::after{content:"–"}
+  .faq-item .a{padding:0 4px 20px;color:var(--ink-soft);font-size:14.5px;max-width:640px}
+
+  /* CTA BANNER */
+  .cta-banner{
+    max-width:1056px;margin:0 auto;border-radius:22px;padding:56px 40px;text-align:center;
+    background:linear-gradient(135deg,var(--magenta),var(--plum));color:#fff;
+  }
+  .cta-banner .tag{font-size:13px;opacity:.85;margin-bottom:14px;font-weight:600}
+  .cta-banner h2{color:#fff;font-size:clamp(24px,3.4vw,34px);margin-bottom:14px}
+  .cta-banner p{opacity:.9;max-width:480px;margin:0 auto 26px;font-size:15px}
+  .cta-banner .btn-primary{background:#fff;color:var(--plum);box-shadow:none}
+
+  /* FOOTER */
+  footer{background:var(--dark);color:#C9B4C4;padding:64px 0 32px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:48px}
+  .foot-grid h4{color:#fff;font-size:13.5px;margin-bottom:14px}
+  .foot-grid a{display:block;font-size:13.5px;padding:5px 0;color:#B99CB3}
+  .foot-grid a:hover{color:#fff}
+  .foot-brand p{font-size:13.5px;max-width:220px;margin:12px 0 16px}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12.5px;flex-wrap:wrap;gap:12px}
+  .badges{display:flex;gap:8px}
+  .badges div{width:38px;height:44px;border-radius:6px;background:rgba(255,255,255,.08)}
+  @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><span class="logo-mark"></span>Chairlyo</div>
+      <div class="nav-links">
+        <a href="#">Platform</a><a href="#">Solutions</a><a href="#">Pricing</a><a href="#">Blog</a><a href="#">Resources</a>
+      </div>
+      <div class="nav-right">
+        <a href="#">Log in</a>
+        <a href="#" class="btn btn-primary" style="padding:10px 20px">Try Free</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="badge">Trusted by 3,000+ salons worldwide</div>
+    <h1>The All-in-One Platform for <span>Modern Salons</span></h1>
+    <p>Booking, staff, payments and client relationships — one calm system that runs your salon so you can focus on the chair.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-primary">Start free trial</a>
+      <a href="#" class="btn btn-ghost">Watch demo</a>
+    </div>
+  </div>
+
+  <div class="dash-frame">
+    <div class="dash-glow"></div>
+    <div class="dashboard">
+      <div class="dash-side">
+        <div class="item active">Dashboard</div>
+        <div class="item">Bookings</div>
+        <div class="item">Clients</div>
+        <div class="item">Staff</div>
+        <div class="item">Payments</div>
+        <div class="item">Reports</div>
+        <div class="item">Settings</div>
+      </div>
+      <div class="dash-main">
+        <div class="dash-topbar"><h3>Good morning, Ava</h3></div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="label">Today's revenue</div><div class="val">$1,842</div></div>
+          <div class="stat-box"><div class="label">Bookings</div><div class="val">24</div></div>
+          <div class="stat-box"><div class="label">New clients</div><div class="val">6</div></div>
+        </div>
+        <div class="chart-row">
+          <div class="panel">
+            <div class="label">Weekly revenue trend</div>
+            <div class="fake-chart">
+              <span style="height:35%"></span><span style="height:50%"></span><span style="height:42%"></span>
+              <span style="height:65%"></span><span style="height:58%"></span><span style="height:80%"></span><span style="height:70%"></span>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="label">Appointments</div>
+            <div class="cal-grid">
+              <div></div><div class="on"></div><div></div><div></div><div class="on"></div><div></div><div></div>
+              <div></div><div></div><div class="on"></div><div></div><div></div><div class="on"></div><div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="statsbar">
+  <div class="wrap">
+    <div><div class="num">3,000+</div><div class="cap">Salons onboarded</div></div>
+    <div><div class="num">9+</div><div class="cap">Years in business</div></div>
+    <div><div class="num">60+</div><div class="cap">Countries served</div></div>
+    <div><div class="num">98%</div><div class="cap">Customer satisfaction</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Everything but the scheduling stress</h2>
+      <p>One system for the six things every salon owner juggles at once.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card"><div class="fc-icon"></div><h3>Smart scheduling</h3><p>Fill every chair with automatic conflict checks and waitlists.</p></div>
+      <div class="feature-card"><div class="fc-icon"></div><h3>Client profiles</h3><p>Notes, colour formulas and visit history in one place.</p></div>
+      <div class="feature-card"><div class="fc-icon"></div><h3>Online booking</h3><p>Clients book their own appointments, day or night.</p></div>
+      <div class="feature-card"><div class="fc-icon"></div><h3>Payments</h3><p>Take deposits, tips and checkout without leaving the app.</p></div>
+      <div class="feature-card"><div class="fc-icon"></div><h3>Staff management</h3><p>Commission, shifts and performance, tracked automatically.</p></div>
+      <div class="feature-card"><div class="fc-icon"></div><h3>Reports</h3><p>See what's working across every location, in real time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Powerful features, built for beauty businesses</h2>
+      <p>Four tools your front desk and your chair both rely on.</p>
+    </div>
+    <div class="tabs">
+      <div class="tab active">Smart Scheduling</div>
+      <div class="tab">Client Profiles</div>
+      <div class="tab">Payments</div>
+      <div class="tab">Reporting</div>
+    </div>
+    <div class="spotlight">
+      <div>
+        <h3>Scheduling that fills every chair</h3>
+        <p>Automatic conflict detection, staff availability, and smart waitlists mean fewer gaps and fewer double-bookings.</p>
+        <div class="callout"><strong>Auto-fill waitlist</strong> — when a slot opens, the next client on the list is notified instantly.</div>
+        <a href="#" class="btn btn-primary">Explore scheduling</a>
+      </div>
+      <div class="spot-visual">
+        <div class="mini">
+          <div class="dot-row"><span></span><span></span><span></span></div>
+          <div class="line" style="width:70%"></div>
+          <div class="line" style="width:90%"></div>
+          <div class="line" style="width:55%"></div>
+          <div class="line" style="width:80%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap builtfor">
+    <div class="photo-card"></div>
+    <div>
+      <h2>Built for every kind of beauty business</h2>
+      <p>From a single chair to a multi-location group, Chairlyo scales with you — hair, nails, skin, and everything between.</p>
+      <div class="highlight"><strong>For multi-location groups:</strong> manage staff, inventory and reporting across every site from one login.</div>
+      <div class="link-row">See all business types →</div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What beauty business owners are saying</h2>
+      <p>A few words from the people running their salons on Chairlyo.</p>
+    </div>
+    <div class="t-grid">
+      <div class="t-card"><p>Booking gaps disappeared within the first month — the waitlist alone paid for the subscription.</p><div class="t-who"><span class="t-avatar"></span><div><div class="name">Riley Souza</div><div class="role">Owner, Bloom Studio</div></div></div></div>
+      <div class="t-card"><p>Our stylists finally trust the schedule. No more double-bookings, no more sticky notes.</p><div class="t-who"><span class="t-avatar"></span><div><div class="name">Jordan Patel</div><div class="role">Manager, Six Chairs</div></div></div></div>
+      <div class="t-card"><p>Reporting across our three locations used to take a weekend. Now it's one dashboard.</p><div class="t-who"><span class="t-avatar"></span><div><div class="name">Marina Cole</div><div class="role">Founder, Cole & Co.</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Frequently asked questions</h2>
+      <p>Can't find what you're looking for? Reach out to our support team.</p>
+    </div>
+    <div class="faq">
+      <details class="faq-item" open><summary>How long does it take to get set up?<span></span></summary><div class="a">Most salons are fully onboarded within a day — import your client list and calendar, and you're ready to take bookings.</div></details>
+      <details class="faq-item"><summary>Can I manage more than one location?<span></span></summary><div class="a">Yes. Multi-location plans share staff, inventory and reporting across every site from a single login.</div></details>
+      <details class="faq-item"><summary>Does Chairlyo handle payments and tips?<span></span></summary><div class="a">Deposits, checkout and tips are all built in, so you never have to leave the app to close out a client.</div></details>
+      <details class="faq-item"><summary>Is there a free trial?<span></span></summary><div class="a">Every plan starts with a 14-day free trial, no card required.</div></details>
+      <details class="faq-item"><summary>What if I need to cancel?<span></span></summary><div class="a">Cancel anytime from your account settings — there's no lock-in contract.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-banner">
+      <div class="tag">● Start today</div>
+      <h2>Ready to transform your beauty business?</h2>
+      <p>Join thousands of salons already running smoother, simpler days with Chairlyo.</p>
+      <a href="#" class="btn btn-primary">Start free trial</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo" style="color:#fff"><span class="logo-mark"></span>Chairlyo</div>
+        <p>The all-in-one management platform for your salon.</p>
+      </div>
+      <div><h4>Product</h4><a href="#">Scheduling</a><a href="#">Client profiles</a><a href="#">Payments</a><a href="#">Reporting</a></div>
+      <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Blog</a><a href="#">Contact</a></div>
+      <div><h4>Support</h4><a href="#">Help center</a><a href="#">FAQ</a><a href="#">Status</a></div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Chairlyo. All rights reserved.</div>
+      <div class="badges"><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

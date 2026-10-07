@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+
+input, 
+textarea{
+  @apply border w-full 
+}

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zuna — Rediscover Your Style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --ink:#1A1A1A;
+  --charcoal:#26261F;
+  --green:#173A2E;
+  --green-deep:#0F2A21;
+  --gold:#C9A227;
+  --stone:#F4F1EA;
+  --stone-2:#E9E4D8;
+  --grey:#6E6B62;
+  --line:#E3DFD3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#fff;line-height:1.55}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;color:var(--green);letter-spacing:-.01em}
+img{max-width:100%;display:block}
+.cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;font-size:13.5px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;border:1.5px solid var(--ink)}
+.btn-dark{background:var(--green);color:#fff;border-color:var(--green)}
+.btn-outline{background:transparent;color:var(--ink)}
+.btn-light{background:#fff;color:var(--ink);border-color:#fff}
+
+/* HEADER */
+header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:50}
+.topbar{background:var(--green);color:#EDE7D6;font-size:12px;text-align:center;padding:7px 0;letter-spacing:.04em}
+nav.main{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.nav-links{display:flex;gap:30px;font-size:13.5px;font-weight:500;letter-spacing:.02em;text-transform:uppercase}
+.brand{font-family:'Playfair Display',serif;font-size:26px;font-weight:600;letter-spacing:.04em}
+.nav-icons{display:flex;gap:20px;font-size:16px}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* HERO */
+.hero{background:#DCE3E4;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.hero-text{padding:90px 56px;display:flex;flex-direction:column;justify-content:center}
+.hero-text h1{font-size:clamp(34px,4.6vw,54px);line-height:1.08;margin-bottom:20px}
+.hero-text p{color:var(--grey);max-width:400px;margin-bottom:30px;font-size:15px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.hero-photo{position:relative;min-height:420px;background:#8D9A9B;overflow:hidden}
+.hero-photo::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(255,255,255,.12),transparent 60%);z-index:1}
+
+/* TICKER */
+.ticker{background:var(--ink);color:#fff;padding:12px 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;gap:44px;animation:scroll 24s linear infinite;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
+.ticker-inner span{opacity:.85}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION HEAD */
+.section{padding:80px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;flex-wrap:wrap;gap:12px}
+.sec-head h2{font-size:26px}
+.sec-head a{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--ink);padding-bottom:2px}
+
+/* PRODUCT GRID */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.product{cursor:pointer}
+.product .img{aspect-ratio:3/4;background:#CFCABB;border-radius:2px;margin-bottom:14px;position:relative;overflow:hidden}
+.product .img::after{content:"\f04e";font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;top:12px;right:12px;font-size:14px;color:var(--ink);opacity:.5}
+.product h4{font-size:14px;font-weight:500;margin-bottom:4px}
+.product .price{font-size:13.5px;color:var(--grey)}
+@media(max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+
+/* CATEGORY */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat-card{position:relative;aspect-ratio:3/4.2;border-radius:2px;overflow:hidden;background:#9C9585}
+.cat-card .label{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent);color:#fff;font-weight:600;font-size:14.5px;text-transform:uppercase;letter-spacing:.03em}
+@media(max-width:900px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* SHOP HIM/HER banners */
+.banner-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.big-banner{position:relative;min-height:420px;border-radius:2px;overflow:hidden;background:#6F7C77}
+.big-banner .tag{position:absolute;left:24px;bottom:24px;color:#fff;z-index:2}
+.big-banner::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,.05) 55%);z-index:1}
+.big-banner .tag h3{color:#fff;font-size:24px;margin-bottom:4px}
+.big-banner .tag p{font-size:12.5px;opacity:.85}
+.big-banner .go{position:absolute;right:20px;bottom:20px;background:#fff;color:var(--ink);font-size:11.5px;font-weight:600;text-transform:uppercase;padding:9px 16px;z-index:2}
+
+/* FEATURED DROP */
+.drop-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:22px}
+.drop-photo{position:relative;min-height:380px;border-radius:2px;overflow:hidden;background:#83786A}
+.drop-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,.05) 55%);z-index:1}
+.drop-photo .cap{position:absolute;left:24px;bottom:24px;color:#fff;z-index:2}
+.drop-photo .cap h3{color:#fff;font-size:26px;letter-spacing:.03em}
+.drop-card{border:1px solid var(--line);padding:26px;display:flex;flex-direction:column}
+.drop-card .thumb{aspect-ratio:1;background:#CFCABB;margin-bottom:18px;position:relative;overflow:hidden}
+.drop-card .icons{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:8px;font-size:13px;z-index:2;color:#fff}
+.drop-card h4{font-size:17px;margin-bottom:6px;color:var(--ink);font-family:'Inter',sans-serif;font-weight:600}
+.drop-card .stars{color:var(--gold);font-size:12.5px;margin-bottom:10px}
+.drop-card .price{font-size:16px;font-weight:600;margin-bottom:18px}
+.drop-card .btn{justify-content:center;width:100%}
+
+/* QUOTE BANNER */
+.quote-banner{position:relative;min-height:420px;background:linear-gradient(150deg,#31423B,#101C17);display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+.quote-banner::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 20%,rgba(255,255,255,.08),transparent 60%)}
+.quote-banner .inner{position:relative;z-index:1;max-width:600px;padding:0 24px}
+.quote-banner h2{color:var(--gold);font-size:clamp(26px,4.4vw,46px);font-style:italic;margin-bottom:16px}
+.quote-banner p{color:#D8D6C9;font-size:14.5px;margin-bottom:28px}
+
+/* STORY */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.story h2{font-size:28px;margin-bottom:20px;font-style:italic}
+.story p{color:var(--grey);font-size:14.5px;margin-bottom:16px;max-width:440px}
+.story-photo{aspect-ratio:4/3;border-radius:2px;background:#2b2b28;position:relative;overflow:hidden;filter:grayscale(1) contrast(1.05)}
+@media(max-width:860px){.story{grid-template-columns:1fr}}
+
+/* VISIT STORE */
+.visit{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;align-items:center;background:var(--stone);border-radius:2px;padding:46px}
+.visit h3{font-size:20px;margin-bottom:14px}
+.visit .row{margin-bottom:14px}
+.visit .row .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--grey);margin-bottom:3px}
+.visit .row .v{font-size:14px}
+.map{aspect-ratio:16/10;border-radius:2px;position:relative;overflow:hidden;background:#D9E4D6}
+.map .road{position:absolute;background:#fff}
+.map .park{position:absolute;background:#C3D9BC;border-radius:6px}
+.map .water{position:absolute;background:#B7D4E0;border-radius:50%}
+.map .pin{position:absolute;top:44%;left:52%;width:18px;height:18px;background:var(--green);border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid #fff}
+@media(max-width:860px){.visit{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:var(--green-deep);color:#CFE0D6;position:relative;overflow:hidden;padding-top:64px}
+footer .wordmark{position:absolute;right:-20px;bottom:-40px;font-family:'Playfair Display',serif;font-size:220px;color:rgba(255,255,255,.04);font-weight:600;line-height:1;pointer-events:none}
+.foot-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:36px;padding-bottom:48px;position:relative;z-index:1}
+.foot-top h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px}
+.foot-top a{display:block;font-size:13.5px;color:#AEC4B7;padding:5px 0}
+.foot-top a:hover{color:#fff}
+.foot-brand p{font-size:13.5px;color:#AEC4B7;max-width:260px;margin:14px 0 20px}
+.nl-row{display:flex;gap:0;max-width:280px}
+.nl-row input{flex:1;padding:11px 14px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-size:13px}
+.nl-row button{padding:11px 16px;background:var(--gold);color:var(--green-deep);border:none;font-weight:700;font-size:12.5px;text-transform:uppercase}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding:22px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:#9FB5A8;position:relative;z-index:1}
+.pay-icons{display:flex;gap:10px;font-size:20px}
+@media(max-width:860px){.foot-top{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">Free shipping on orders over $150 — New season arrivals now live</div>
+  <div class="wrap">
+    <nav class="main">
+      <div class="nav-links"><a href="#">Men</a><a href="#">Women</a><a href="#">New In</a><a href="#">Sale</a></div>
+      <div class="brand">Zuna</div>
+      <div class="nav-icons">
+        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="#"><i class="fa-regular fa-user"></i></a>
+        <a href="#"><i class="fa-solid fa-bag-shopping"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <h1>Rediscover<br>Your Style</h1>
+      <p>Considered essentials cut from natural fibres — built to be worn on repeat, season after season.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn btn-dark">Shop Now</a>
+        <a href="#" class="btn btn-outline">See Collection</a>
+      </div>
+    </div>
+    <div class="hero-photo"><img class="cover-img" src="https://picsum.photos/id/1027/900/1000" alt="Model in dark tailored coat"></div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Free Shipping Over $150</span><span>New Arrivals Weekly</span><span>Sustainably Sourced Fabric</span><span>Easy 30-Day Returns</span>
+    <span>Free Shipping Over $150</span><span>New Arrivals Weekly</span><span>Sustainably Sourced Fabric</span><span>Easy 30-Day Returns</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><h2>Shop New Arrivals</h2><a href="#">View all</a></div>
+    <div class="grid-4">
+      <div class="product"><div class="img"><img class="cover-img" src="https://picsum.photos/id/1074/500/650" alt="Washed cotton hoodie"></div><h4>Washed Cotton Hoodie</h4><div class="price">$68.00</div></div>
+      <div class="product"><div class="img"><img class="cover-img" src="https://picsum.photos/id/1078/500/650" alt="Oversized half-zip"></div><h4>Oversized Half-Zip</h4><div class="price">$74.00</div></div>
+      <div class="product"><div class="img"><img class="cover-img" src="https://picsum.photos/id/1080/500/650" alt="Heavyweight crewneck"></div><h4>Heavyweight Crewneck</h4><div class="price">$62.00</div></div>
+      <div class="product"><div class="img"><img class="cover-img" src="https://picsum.photos/id/1084/500/650" alt="Textured pullover"></div><h4>Textured Pullover</h4><div class="price">$70.00</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>Shop by Category</h2><a href="#">View all</a></div>
+    <div class="cat-grid">
+      <div class="cat-card"><img class="cover-img" src="https://picsum.photos/id/1005/500/700" alt="Outerwear"><div class="label">Outerwear</div></div>
+      <div class="cat-card"><img class="cover-img" src="https://picsum.photos/id/1011/500/700" alt="Sweatpants"><div class="label">Sweatpants</div></div>
+      <div class="cat-card"><img class="cover-img" src="https://picsum.photos/id/1012/500/700" alt="Layering"><div class="label">Layering</div></div>
+      <div class="cat-card"><img class="cover-img" src="https://picsum.photos/id/1025/500/700" alt="Knitwear"><div class="label">Knitwear</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="banner-2">
+      <div class="big-banner"><img class="cover-img" src="https://picsum.photos/id/1062/900/900" alt="Menswear"><div class="tag"><h3>Supply for Him</h3><p>Tailored basics</p></div><div class="go">Shop Him</div></div>
+      <div class="big-banner"><img class="cover-img" src="https://picsum.photos/id/1027/900/900" alt="Womenswear"><div class="tag"><h3>Supply for Her</h3><p>Fluid silhouettes</p></div><div class="go">Shop Her</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>Featured Drop</h2></div>
+    <div class="drop-grid">
+      <div class="drop-photo"><img class="cover-img" src="https://picsum.photos/id/1069/1000/750" alt="Aether Core Hoodie on model"><div class="cap"><h3>Aether Core Hoodie</h3><p>Limited run — heavyweight fleece</p></div></div>
+      <div class="drop-card">
+        <div class="thumb"><img class="cover-img" src="https://picsum.photos/id/1074/500/500" alt="Aether Core Hoodie product shot"><div class="icons"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-arrows-rotate"></i></div></div>
+        <h4>Aether Core Hoodie</h4>
+        <div class="stars">★★★★★ <span style="color:var(--grey)">(214)</span></div>
+        <div class="price">$88.00</div>
+        <a href="#" class="btn btn-dark">Add to Cart</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-banner">
+  <div class="inner">
+    <h2>Dress Like You Mean It</h2>
+    <p>The new seasonal edit is here — built for the days that matter and the ones that don't.</p>
+    <a href="#" class="btn btn-light">Shop Now</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="story">
+      <div>
+        <h2>Zuna — The Essence of Luxury</h2>
+        <p>Every Zuna piece begins with fabric first — natural fibres sourced from mills we've worked with for years, cut into shapes that outlast trends.</p>
+        <p>Our small-batch approach means fewer pieces, made properly, by people who are paid fairly for the work.</p>
+        <a href="#" class="btn btn-dark">Read More</a>
+      </div>
+      <div class="story-photo"><img class="cover-img" src="https://picsum.photos/id/1035/700/540" alt="Craftsperson sewing garment"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="visit">
+      <div>
+        <h3>Visit Our Store</h3>
+        <div class="row"><div class="k">Address</div><div class="v">128 Mercer Street, New York, NY 10012</div></div>
+        <div class="row"><div class="k">Hours</div><div class="v">Mon–Sat 10am–7pm · Sun 11am–5pm</div></div>
+        <a href="#" class="btn btn-dark" style="margin-top:10px">Get Directions</a>
+      </div>
+      <div class="map">
+        <div class="park" style="width:40%;height:60%;top:10%;left:4%"></div>
+        <div class="park" style="width:22%;height:30%;bottom:8%;right:10%"></div>
+        <div class="water" style="width:120px;height:120px;bottom:-30px;left:38%"></div>
+        <div class="road" style="height:3px;width:100%;top:35%"></div>
+        <div class="road" style="height:3px;width:100%;top:68%"></div>
+        <div class="road" style="width:3px;height:100%;left:60%"></div>
+        <div class="pin"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wordmark">Zuna</div>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brand" style="color:#fff">Zuna</div>
+        <p>Considered clothing, made to be worn — not just bought.</p>
+        <div class="nl-row"><input type="email" placeholder="Your email"><button>Join</button></div>
+      </div>
+      <div><h4>Shop</h4><a href="#">New In</a><a href="#">Men</a><a href="#">Women</a><a href="#">Sale</a></div>
+      <div><h4>Help &amp; Info</h4><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Size Guide</a><a href="#">Contact</a></div>
+      <div><h4>Stay Updated</h4><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">TikTok</a><a href="#">Facebook</a></div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Zuna Design. All rights reserved.</p>
+      <div class="pay-icons">
+        <i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-paypal"></i><i class="fa-brands fa-cc-apple-pay"></i>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
